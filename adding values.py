@@ -8,26 +8,24 @@ try:
     print('connected')
 except Exception as e:
     print(e)
-#creating tkinter GUI screen
+
 board=Tk()
-board.geometry('900x700')
 board.title('grocery management system')
 def showall():
     nb=Toplevel(board)
-    # Using treeview widget
+    nb.geometry('1100x800')
     trv = ttk.Treeview(nb, selectmode ='browse')
     trv.grid(row=1,column=1,padx=20,pady=20)
-    # number of columns
+
     trv["columns"] = ("1", "2", "3","4")
-    # Defining heading
+
     trv['show'] = 'headings'
-    # width of columns and alignment 
+
     trv.column("1", width = 100, anchor ='c')
     trv.column("2", width = 300, anchor ='w')
     trv.column("3", width = 40, anchor ='c')
     trv.column("4", width = 80, anchor ='c')
-    # Headings  
-    # respective columns
+
     trv.heading("1", text ="Bar code")
     trv.heading("2", text ="Name")
     trv.heading("3", text ="Price")
@@ -53,20 +51,19 @@ def showall():
 def showbar():
     nb=Toplevel(board)
     v=IntVar()
-    # Using treeview widget
+
     trv = ttk.Treeview(nb, selectmode ='browse')
     trv.grid(row=1,column=1,padx=20,pady=20)
-    # number of columns
+    
     trv["columns"] = ("1", "2", "3","4")
-    # Defining heading
+
     trv['show'] = 'headings'
-    # width of columns and alignment 
+ 
     trv.column("1", width = 100, anchor ='c')
     trv.column("2", width = 300, anchor ='w')
     trv.column("3", width = 40, anchor ='c')
     trv.column("4", width = 80, anchor ='c')
-    # Headings  
-    # respective columns
+
     trv.heading("1", text ="Bar code")
     trv.heading("2", text ="Name")
     trv.heading("3", text ="Price")
@@ -100,6 +97,7 @@ def showbar():
     b.grid(row=25,column=1,padx=20,pady=20)
     b2.grid(row=25,column=2,padx=20,pady=20)
     nb.mainloop()
+
     
 def sell():
     nb=Toplevel(board)
@@ -139,7 +137,6 @@ def sell():
     b.pack()
     b2.pack()
     nb.mainloop()
-
 
 
 def buy():
@@ -235,8 +232,6 @@ def add_new():
     nb.mainloop()
 
 
-
-
 def delit():
     nb=Toplevel(board)
     v=IntVar()
@@ -280,18 +275,20 @@ def exit1():
 
 
 bb=0
-btn =Button(board, text="show all the elements", command=showall)
-btn.pack()
-btn2 =Button(board, text="show elements using their barcode", command=showbar)
-btn2.pack()
-btn3 =Button(board, text="sell items to a customer", command=sell)
-btn3.pack()
-btn4 =Button(board, text="restock", command=buy)
-btn4.pack()
-btn5 =Button(board, text="add a new item to stock", command=add_new)
-btn5.pack()
-btn6 =Button(board, text="delete an item from the stock", command=delit)
-btn6.pack()
-btn6 =Button(board, text="EXIT", command=exit1)
-btn6.pack()
+labl=Label(board,text = "WELCOME",font=('Franklin Gothic Demi',110,"bold"))
+labl.grid(row=0, pady=5,columnspan=3)
+btn =Button(board, text="show all the elements", command=showall,height= 5, width=25,wraplength=250,font=('Franklin Gothic Medium',20))
+btn.grid(column=0, row=1)
+btn2 =Button(board, text="show elements using their barcode", command=showbar,height= 5, width=25,wraplength=250,font=('Franklin Gothic Medium',20))
+btn2.grid(column=1, row=1, padx=5)
+btn3 =Button(board, text="sell items to a customer", command=sell,height= 5, width=25,wraplength=250,font=('Franklin Gothic Medium',20))
+btn3.grid(column=2, row=1, padx=5)
+btn4 =Button(board, text="restock", command=buy,height= 5, width=25,wraplength=250,font=('Franklin Gothic Medium',20))
+btn4.grid(column=0, row=2, padx=5)
+btn5 =Button(board, text="add a new item to stock", command=add_new,height= 5, width=25,wraplength=250,font=('Franklin Gothic Medium',20))
+btn5.grid(column=1, row=2, padx=5)
+btn6 =Button(board, text="delete an item from the stock", command=delit,height= 5, width=25,wraplength=250,font=('Franklin Gothic Medium',20))
+btn6.grid(column=2, row=2, padx=5)
+btn7 =Button(board, text="EXIT", command=exit1,height= 5, width=25,wraplength=250,font=('Franklin Gothic Medium',20))
+btn7.grid(column=1, row=3, padx=5)
 board.mainloop()
