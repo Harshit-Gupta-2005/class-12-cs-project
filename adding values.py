@@ -2,6 +2,7 @@ import pymysql
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+import csv
 try:
     db=pymysql.connect(host='localhost',user='root',password='bruh',db='grocery_store')
     print('connected')
@@ -215,7 +216,7 @@ def buy():
             messagebox.showerror('Error',ex)
     m2 = Label(nb,text = "barcode no.")
     e2 = Entry(nb,textvariable=v2)
-    m1 = Label(nb,text = "quantity sold")
+    m1 = Label(nb,text = "quantity bought for restock")
     e1 = Entry(nb,textvariable=v1)
     b=Button(nb,text='ADD TO STOCK',command=showit3)
     b2 =Button(nb, text="EXIT", command=exit2)
@@ -269,7 +270,8 @@ def add_new():
                     cr=db.cursor()
                     cr.execute(query)
                     db.commit()
-                    print('added')
+                    trv.insert("", 'end',iid=v1.get(), text=v1.get(),values =(v1.get(),v2.get(),v3.get(),v4.get()))
+
             else:
                 messagebox.showerror('Error',"value already exists")
         except Exception as ex:
